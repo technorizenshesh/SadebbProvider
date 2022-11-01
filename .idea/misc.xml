@@ -6,6 +6,7 @@
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/drawable-v24/bg_stroke_gray.xml" value="0.132" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/drawable/bg_stroke_blue.xml" value="0.2" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/drawable/black_rec.xml" value="0.132" />
+        <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/drawable/ic_delete.xml" value="0.2" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/drawable/rec_cornors_5.xml" value="0.132" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_add_client.xml" value="0.25" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_add_saloon_photo.xml" value="0.16540084388185655" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_add_user.xml" value="0.16540084388185655" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_all_users_list.xml" value="0.16540084388185655" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_billing.xml" value="0.33" />
+        <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_billing_screen2.xml" value="0.25" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_business_detail.xml" value="0.16" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_client_detail.xml" value="0.2" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/activity_confirm_billing.xml" value="0.2" />
@@ -33,11 +35,12 @@
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/client_item.xml" value="0.25" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/fragment_billing.xml" value="0.22" />
+        <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/fragment_billing_demo.xml" value="0.22" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/fragment_home.xml" value="0.1675213675213675" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/item_billing.xml" value="0.22" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/item_billing_service.xml" value="0.25" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/item_home.xml" value="0.1675213675213675" />
-        <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/item_service_to_billed.xml" value="0.1675213675213675" />
+        <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/item_service_to_billed.xml" value="0.25" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/item_services_list.xml" value="0.1675213675213675" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/items.xml" value="0.16540084388185655" />
         <entry key="..\:/Lokesh/Sadeb/SadebProvider/SadebProvider/app/src/main/res/layout/loader.xml" value="0.14145299145299145" />

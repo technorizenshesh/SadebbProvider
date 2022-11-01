@@ -115,7 +115,19 @@ public class AccountFragment extends Fragment {
             startActivity(new Intent(getContext(), UpdatePassword.class));
         });
         binding.RRInvite.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), InviteFriends.class));
+
+            String link = "https://play.google.com/store/apps/";
+
+            Uri uri = Uri.parse(link);
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, link.toString());
+
+            startActivity(Intent.createChooser(intent, "Share Link"));
+
+
+//            startActivity(new Intent(getContext(), InviteFriends.class));
         });
 
         binding.clientCreation.setOnClickListener(v -> {

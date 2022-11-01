@@ -60,7 +60,6 @@ public class ServicesListBillingAdapter extends RecyclerView.Adapter<ServicesLis
 //            intent.putExtra("service_id",myservicelist.get(position).getId());
 //            holder.ll_main.getContext().startActivity(intent);
 
-
         });
     }
 
@@ -81,6 +80,7 @@ public class ServicesListBillingAdapter extends RecyclerView.Adapter<ServicesLis
             iv_service_img = itemView.findViewById(R.id.iv_provider_image);
 
             tv_service_name = itemView.findViewById(R.id.serviceName);
+
             tv_service_price = itemView.findViewById(R.id.srvicePrice);
 
             ll_main = itemView.findViewById(R.id.ll_main);

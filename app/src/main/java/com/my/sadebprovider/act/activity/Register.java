@@ -74,13 +74,10 @@ import retrofit2.Response;
 import static com.my.sadebprovider.R.string.enter_conf;
 import static com.my.sadebprovider.R.string.enter_pass;
 
-
 public class Register extends AppCompatActivity {
 
     private final List<BusinessType.Result> list = new ArrayList<>();
-
     private String date;
-
     private SpinnerBusinessTypeAdapter adapter;
     private ActivityRegisterBinding binding;
     private String called_from;
@@ -88,11 +85,10 @@ public class Register extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
     final int PERMISSION_ALL = 100;
     String latitude="",longitude="";
-
     private Bitmap bitmap;
     private File file;
+//  String register_id="";
 
-//    String register_id="";
 final String[] PERMISSIONS = {
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE,

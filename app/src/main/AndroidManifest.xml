@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SadebProvider">
         <activity
+            android:name=".act.activity.BillingScreen2"
+            android:exported="false" />
+        <activity
             android:name=".act.activity.ConfirmBillingAct"
             android:exported="false" />
         <activity

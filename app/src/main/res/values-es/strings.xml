@@ -146,7 +146,7 @@ Simplemente comparta este código con sus amigos y pídales que se registren y a
     <string name="no_notification_found">No se encontró ninguna notificación</string>
     <string name="my_service">Mi Servicios</string>
     <string name="accepted">Aceptado</string>
-    <string name="add_new_category">AGregar nueva categoria</string>
+    <string name="add_new_category">Agregar nueva categoria</string>
     <string name="add_category">añadir categoría</string>
     <string name="field_required">Campo requerido</string>
     <string name="category_added_successfully">Categoría agregada con éxito </string>
@@ -195,6 +195,10 @@ Simplemente comparta este código con sus amigos y pídales que se registren y a
     <string name="clients">Clientas</string>
     <string name="date">Fecha:</string>
     <string name="facturar">Facturar</string>
+    <string name="services_to_be_billed">Servicios a facturar</string>
+
+    <string name="select_service">Seleccionar servicio</string>
+
 </resources>
 
 <!--

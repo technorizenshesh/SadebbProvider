@@ -45,10 +45,10 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/raleway_semibold"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="@string/date"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_11sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/raleway_semibold"
-                        android:text="Services to be billed"
+                        android:text="@string/services_to_be_billed"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
@@ -207,14 +207,12 @@
 
                                 </LinearLayout>
 
-
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/rvServicesToBeBilled"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     />
-
 
                                 <TextView
                                     android:id="@+id/tvNext"

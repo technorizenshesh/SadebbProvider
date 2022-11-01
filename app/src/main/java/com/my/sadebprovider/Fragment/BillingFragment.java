@@ -23,6 +23,7 @@ import com.google.gson.JsonObject;
 import com.my.sadebprovider.Model.HomeModel;
 import com.my.sadebprovider.R;
 import com.my.sadebprovider.act.activity.AddSaloonPhoto;
+import com.my.sadebprovider.act.activity.BillingScreen2;
 import com.my.sadebprovider.act.activity.ConfirmBillingAct;
 import com.my.sadebprovider.act.activity.ServicesListActivity;
 import com.my.sadebprovider.act.activity.StatusResponse;
@@ -41,6 +42,7 @@ import com.my.sadebprovider.adapter.ServiceTobeBilledAdapter;
 import com.my.sadebprovider.adapter.ServicesListBillingAdapter;
 import com.my.sadebprovider.adapter.ServicesListViewAdapter;
 import com.my.sadebprovider.databinding.FragmentBillingBinding;
+import com.my.sadebprovider.databinding.FragmentBillingDemoBinding;
 import com.my.sadebprovider.databinding.FragmentHomeBinding;
 import com.my.sadebprovider.util.SharePrefrenceConstraint;
 import com.my.sadebprovider.util.SharedPrefsManager;
@@ -62,7 +64,7 @@ import retrofit2.Response;
  */
 public class BillingFragment extends Fragment {
 
-    FragmentBillingBinding binding;
+    FragmentBillingDemoBinding binding;
 
     private  List<com.my.sadebprovider.act.model.service.ResultItem> myservicelist = new ArrayList();
 
@@ -123,18 +125,66 @@ public class BillingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_billing, container, false);
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_billing_demo, container, false);
 //        setAdapter();
 
         String date = new SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault()).format(new Date());
 
         binding.tvDate.setText(getString(R.string.date)+" "+date);
 
-        binding.tvClear.setOnClickListener(v ->
-                {
-                    myserviceresponse();
-                }
-                );
+//        binding.tvClear.setOnClickListener(v ->
+//                {
+//                    myserviceresponse();
+//                }
+//                );
+
+//        binding.tvNext.setOnClickListener(v ->
+//                {
+//                    if(!binding.etSearchClient.getText().toString().equals(""))
+//                    {
+//
+//                        if(!binding.etRUC.getText().toString().equals(""))
+//                        {
+//                            if(myAddedServiceList.size()>0)
+//                            {
+//
+//                                String services = "";
+//                                String prices = "";
+//                                float total = 0;
+//
+//                                for (com.my.sadebprovider.act.model.service.ResultItem resultItem:myAddedServiceList)
+//                                {
+//                                    services = services+resultItem.getId()+",";
+//                                    prices = prices+resultItem.getServicePrice()+",";
+//                                    total =total+ Float.parseFloat(resultItem.getServicePrice());
+//                                }
+//
+//                                prices = prices.substring(0, prices.length() -1);
+//                                services = services.substring(0, services.length() -1);
+//
+//                                startActivity(new Intent(getActivity(), BillingScreen2.class).putExtra("price",prices)
+//                                        .putExtra("services",services)
+//                                        .putExtra("total",total+"")
+//                                        .putExtra("name",binding.etSearchClient.getText().toString())
+//                                        .putExtra("ruc",binding.etRUC.getText().toString())
+//                                );
+//                            }
+//                            else
+//                            {
+//                                Toast.makeText(getActivity(), "Por favor agregue servicios", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }else
+//                        {
+//                            Toast.makeText(getActivity(), "Ingresar RUC", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                    else
+//                    {
+//                        Toast.makeText(getActivity(), "Por favor ingrese el nombre del cliente", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                );
+
 
         binding.tvNext.setOnClickListener(v ->
                 {
@@ -143,58 +193,62 @@ public class BillingFragment extends Fragment {
 
                         if(!binding.etRUC.getText().toString().equals(""))
                         {
-                            if(myAddedServiceList.size()>0)
-                            {
 
-                                String services = "";
-                                String prices = "";
-                                float total = 0;
-
-                                for (com.my.sadebprovider.act.model.service.ResultItem resultItem:myAddedServiceList)
-                                {
-                                    services = services+resultItem.getId()+",";
-                                    prices = prices+resultItem.getServicePrice()+",";
-                                    total =total+ Float.parseFloat(resultItem.getServicePrice());
-                                }
-
-                                prices = prices.substring(0, prices.length() -1);
-                                services = services.substring(0, services.length() -1);
-
-                                startActivity(new Intent(getActivity(), ConfirmBillingAct.class).putExtra("price",prices)
-                                        .putExtra("services",services)
-                                        .putExtra("total",total+"")
-                                        .putExtra("name",binding.etSearchClient.getText().toString())
-                                        .putExtra("ruc",binding.etRUC.getText().toString())
-                                );
-                            }
-                            else
-                            {
-                                Toast.makeText(getActivity(), "Por favor agregue servicios", Toast.LENGTH_SHORT).show();
-                            }
-
+                            startActivity(new Intent(getActivity(), BillingScreen2.class)
+                                    .putExtra("name",binding.etSearchClient.getText().toString())
+                                    .putExtra("ruc",binding.etRUC.getText().toString())
+                            );
+//
+//                            if(myAddedServiceList.size()>0)
+//                            {
+//
+//                                String services = "";
+//                                String prices = "";
+//                                float total = 0;
+//
+//                                for (com.my.sadebprovider.act.model.service.ResultItem resultItem:myAddedServiceList)
+//                                {
+//                                    services = services+resultItem.getId()+",";
+//                                    prices = prices+resultItem.getServicePrice()+",";
+//                                    total =total+ Float.parseFloat(resultItem.getServicePrice());
+//                                }
+//
+//                                prices = prices.substring(0, prices.length() -1);
+//                                services = services.substring(0, services.length() -1);
+//
+//                                startActivity(new Intent(getActivity(), BillingScreen2.class).putExtra("price",prices)
+//                                        .putExtra("services",services)
+//                                        .putExtra("total",total+"")
+//                                        .putExtra("name",binding.etSearchClient.getText().toString())
+//                                        .putExtra("ruc",binding.etRUC.getText().toString())
+//                                );
+//                            }
+//                            else
+//                            {
+//                                Toast.makeText(getActivity(), "Por favor agregue servicios", Toast.LENGTH_SHORT).show();
+//                            }
                         }else
                         {
                             Toast.makeText(getActivity(), "Ingresar RUC", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                     else
                     {
                         Toast.makeText(getActivity(), "Por favor ingrese el nombre del cliente", Toast.LENGTH_SHORT).show();
                     }
                 }
-                );
+        );
 
-        binding.etVendor.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    searchServiceResponse(binding.etVendor.getText().toString());
-                    return true;
-                }
-                return false;
-            }
-        });
+//        binding.etVendor.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//                    searchServiceResponse(binding.etVendor.getText().toString());
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         return binding.getRoot();
     }
@@ -202,310 +256,167 @@ public class BillingFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        myserviceresponse();
+//        myserviceresponse();
     }
 
-
-    public void searchServiceResponse(String text) {
-        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
-        ResponseAuthentication model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
-
-        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
-                .create(ServiceRequest.class)
-                .getSeachService(model.getResult().getId(),text)
-                .enqueue(new Callback<JsonElement>() {
-                    @Override
-                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-
-                        binding.loaderLayout.loader.setVisibility(View.GONE);
-
-                        if (response!=null){
-                            if (response.isSuccessful()){
-                                JsonObject object = response.body().getAsJsonObject();
-                                int status =object.get("status").getAsInt();
-                                Log.i("sfdvxc", "status: " +status );
-                                if (status==1){
-                                    myservicelist=new ArrayList<>();
-                                    GetServiceResponse authentication = new Gson().fromJson(object,GetServiceResponse.class);
-                                    myservicelist.addAll(authentication.getResult());
-
-                                    mAdapter = new ServicesListBillingAdapter(getActivity(), new ServicesListBillingAdapter.SelectedItem() {
-                                        @Override
-                                        public void deleteItem(int position) {
-
-                                            updateSelectedinvoiceItems(position);
-
-                                        }
-
-                                        @Override
-                                        public void updateItem(int Position) {
-
-                                        }
-                                    });
-
-                                    mAdapter.setMyservicelist(myservicelist);
-//                        binding.recyclerServicesList.setHasFixedSize(true);
-                                    binding.rvServices.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-                                    binding.rvServices.setAdapter(mAdapter);
-                                    mAdapter.notifyDataSetChanged();
-
-                                }else {
-
-                                }
-                            }
-                        }
-
-                        Log.i("sfdvxc", "onResponse: " + response.body());
-                        Log.i("sfdvxc", "onResponse: " + response.toString());
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<JsonElement> call, Throwable t) {
-                        binding.loaderLayout.loader.setVisibility(View.GONE);
-                        Log.i("sfdvxc", "onFailure: " + t.getMessage());
-                    }
-                });
-    }
-
-
-    public void myserviceresponse() {
-        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
-        ResponseAuthentication model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
-
-        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
-                .create(ServiceRequest.class)
-                .getmyServices(model.getResult().getId())
-                .enqueue(new Callback<JsonElement>() {
-                    @Override
-                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-
-                        binding.loaderLayout.loader.setVisibility(View.GONE);
-
-                        if (response!=null){
-                            if (response.isSuccessful()){
-                                JsonObject object = response.body().getAsJsonObject();
-                                int status =object.get("status").getAsInt();
-                                Log.i("sfdvxc", "status: " +status );
-                                if (status==1){
-                                    myservicelist=new ArrayList<>();
-                                    GetServiceResponse authentication = new Gson().fromJson(object,GetServiceResponse.class);
-                                    myservicelist.addAll(authentication.getResult());
-
-                                    mAdapter = new ServicesListBillingAdapter(getActivity(), new ServicesListBillingAdapter.SelectedItem() {
-                                        @Override
-                                        public void deleteItem(int position) {
-
-                                            updateSelectedinvoiceItems(position);
-
-                                        }
-
-                                        @Override
-                                        public void updateItem(int Position) {
-
-                                        }
-                                    });
-
-                                    mAdapter.setMyservicelist(myservicelist);
-//                        binding.recyclerServicesList.setHasFixedSize(true);
-                                    binding.rvServices.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-                                    binding.rvServices.setAdapter(mAdapter);
-                                    mAdapter.notifyDataSetChanged();
-
-                                }else {
-
-                                }
-                            }
-                        }
-
-                        Log.i("sfdvxc", "onResponse: " + response.body());
-                        Log.i("sfdvxc", "onResponse: " + response.toString());
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<JsonElement> call, Throwable t) {
-                        binding.loaderLayout.loader.setVisibility(View.GONE);
-                        Log.i("sfdvxc", "onFailure: " + t.getMessage());
-                    }
-                });
-    }
-
-
-    public void updateSelectedinvoiceItems(int position)
-    {
-
-        myAddedServiceList.add(myservicelist.get(position));
-        binding.rvServicesToBeBilled.setHasFixedSize(true);
-        binding.rvServicesToBeBilled.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        serviceTobeBilledAdapter = new ServiceTobeBilledAdapter(getActivity());
-
-        serviceTobeBilledAdapter.setList(myAddedServiceList);
-
-        binding.rvServicesToBeBilled.setAdapter(serviceTobeBilledAdapter);
-
-        serviceTobeBilledAdapter.notifyDataSetChanged();
-
-    }
-
-
-//    private void getBookingRequest() {
-//        Log.i("cscc", "getBookingRequest: " + 12);
-//        model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
-//        binding.llMain.setVisibility(View.GONE);
+//    public void searchServiceResponse(String text) {
 //        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
-//        if (model != null) {
-//            String User_ID = model.getResult().getId();
-//            RetrofitClient.getClient(NetworkConstraint.BASE_URL)
-//                    .create(BookingRequest.class)
-//                    .getCompletedAppointment(User_ID)
-//                    .enqueue(new Callback<JsonElement>() {
-//                        @Override
-//                        public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-////                            ++API_COUNT;
-////                            if (API_COUNT == ALL_API_COUNT) {
-//                            binding.llMain.setVisibility(View.VISIBLE);
-//                            binding.loaderLayout.loader.setVisibility(View.GONE);
-////                            }
-//                            Log.i("scvdbx", "onResponse: " + response.toString());
+//        ResponseAuthentication model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
 //
-//                            if (response != null) {
-//                                if (response.isSuccessful()) {
-//                                    JsonObject object = response.body().getAsJsonObject();
-//                                    int status = object.get("status").getAsInt();
-//                                    Log.i("scvdbx", "sta: " + status);
-//                                    if (status == 1) {
-//                                        list=new ArrayList<>();
-//                                        authentication = new Gson().fromJson(object, BookingAppointmentResponse.class);
-//                                        list.addAll(authentication.getResult());
-//                                        mAdapter.setList(list);
-//                                        mAdapter.notifyDataSetChanged();
-//                                        Log.i("dvdvvxv", "onResponse: " + list.toString());
-//                                        if (list.size() > 0) {
-//                                            binding.tvNoProductFound.setVisibility(View.GONE);
-//                                        }else {
-//                                            binding.tvNoProductFound.setVisibility(View.VISIBLE);
+//        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
+//                .create(ServiceRequest.class)
+//                .getSeachService(model.getResult().getId(),text)
+//                .enqueue(new Callback<JsonElement>() {
+//                    @Override
+//                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+//
+//                        binding.loaderLayout.loader.setVisibility(View.GONE);
+//
+//                        if (response!=null){
+//                            if (response.isSuccessful()){
+//                                JsonObject object = response.body().getAsJsonObject();
+//                                int status =object.get("status").getAsInt();
+//                                Log.i("sfdvxc", "status: " +status );
+//                                if (status==1){
+//                                    myservicelist=new ArrayList<>();
+//                                    GetServiceResponse authentication = new Gson().fromJson(object,GetServiceResponse.class);
+//                                    myservicelist.addAll(authentication.getResult());
+//
+//                                    mAdapter = new ServicesListBillingAdapter(getActivity(), new ServicesListBillingAdapter.SelectedItem() {
+//                                        @Override
+//                                        public void deleteItem(int position) {
+//
+//                                            updateSelectedinvoiceItems(position);
+//
 //                                        }
-//                                    } else {
-//                                        ResponseAuthError authentication = new Gson().fromJson(object, ResponseAuthError.class);
-//                                        Toast.makeText(getContext(), authentication.getResult(), Toast.LENGTH_SHORT).show();
-//                                        if (list.size() > 0) {
-//                                            binding.tvNoProductFound.setVisibility(View.GONE);
-//                                        }else {
-//                                            binding.tvNoProductFound.setVisibility(View.VISIBLE);
+//
+//                                        @Override
+//                                        public void updateItem(int Position) {
+//
 //                                        }
-//                                    }
+//                                    });
+//
+//                                    mAdapter.setMyservicelist(myservicelist);
+////                        binding.recyclerServicesList.setHasFixedSize(true);
+//                                    binding.rvServices.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//                                    binding.rvServices.setAdapter(mAdapter);
+//                                    mAdapter.notifyDataSetChanged();
+//
+//                                }else {
+//
 //                                }
 //                            }
 //                        }
-//                        @Override
-//                        public void onFailure(Call<JsonElement> call, Throwable t) {
-////                            ++API_COUNT;
-////                            if (API_COUNT == ALL_API_COUNT) {
-//                            Log.i("scvdbx", "sta: " + t.getMessage());
-//                            binding.loaderLayout.loader.setVisibility(View.GONE);
-////                            }
-//                        }
-//                    });
-//        }
+//
+//                        Log.i("sfdvxc", "onResponse: " + response.body());
+//                        Log.i("sfdvxc", "onResponse: " + response.toString());
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<JsonElement> call, Throwable t) {
+//                        binding.loaderLayout.loader.setVisibility(View.GONE);
+//                        Log.i("sfdvxc", "onFailure: " + t.getMessage());
+//                    }
+//                });
 //    }
-//    private void setAdapter() {
-//        mAdapter = new HomeCompletedRecyclerViewAdapter(getContext(), new HomeCompletedRecyclerViewAdapter.Status() {
+
+
+//    public void myserviceresponse() {
+//        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+//        ResponseAuthentication model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
+//
+//        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
+//                .create(ServiceRequest.class)
+//                .getmyServices(model.getResult().getId())
+//                .enqueue(new Callback<JsonElement>() {
+//                    @Override
+//                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+//
+//                        binding.loaderLayout.loader.setVisibility(View.GONE);
+//
+//                        if (response!=null){
+//                            if (response.isSuccessful()){
+//                                JsonObject object = response.body().getAsJsonObject();
+//                                int status =object.get("status").getAsInt();
+//                                Log.i("sfdvxc", "status: " +status );
+//                                if (status==1){
+//                                    myservicelist=new ArrayList<>();
+//                                    GetServiceResponse authentication = new Gson().fromJson(object,GetServiceResponse.class);
+//                                    myservicelist.addAll(authentication.getResult());
+//
+//                                    mAdapter = new ServicesListBillingAdapter(getActivity(), new ServicesListBillingAdapter.SelectedItem() {
+//                                        @Override
+//                                        public void deleteItem(int position) {
+//
+//                                            updateSelectedinvoiceItems(position);
+//
+//                                        }
+//
+//                                        @Override
+//                                        public void updateItem(int Position) {
+//
+//                                        }
+//                                    });
+//
+//                                    mAdapter.setMyservicelist(myservicelist);
+////                        binding.recyclerServicesList.setHasFixedSize(true);
+//                                    binding.rvServices.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//                                    binding.rvServices.setAdapter(mAdapter);
+//                                    mAdapter.notifyDataSetChanged();
+//
+//                                }else {
+//
+//                                }
+//                            }
+//                        }
+//
+//                        Log.i("sfdvxc", "onResponse: " + response.body());
+//                        Log.i("sfdvxc", "onResponse: " + response.toString());
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<JsonElement> call, Throwable t) {
+//                        binding.loaderLayout.loader.setVisibility(View.GONE);
+//                        Log.i("sfdvxc", "onFailure: " + t.getMessage());
+//                    }
+//                });
+//    }
+//
+//
+//    public void updateSelectedinvoiceItems(int position)
+//    {
+//
+//        myAddedServiceList.add(myservicelist.get(position));
+//        binding.rvServicesToBeBilled.setHasFixedSize(true);
+//        binding.rvServicesToBeBilled.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//        serviceTobeBilledAdapter = new ServiceTobeBilledAdapter(getActivity(), new ServicesListBillingAdapter.SelectedItem() {
 //            @Override
-//            public void acceptcontrol(int position, HomeFragment.DoneCallback callback) {
-//                acceptResponse(position, callback);
+//            public void deleteItem(int pos) {
+//
+//                myAddedServiceList.remove(pos);
+//                serviceTobeBilledAdapter.notifyDataSetChanged();
+//
 //            }
 //
 //            @Override
-//            public void declinetcontrol(int position, HomeFragment.DoneCallback callback) {
-//                declineResponce(position, callback);
+//            public void updateItem(int Position) {
+//
 //            }
 //        });
-//        mAdapter.setList(list);
-//        binding.recyclerReequuest.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        binding.recyclerReequuest.setAdapter(mAdapter);
-//    }
 //
-//    private void declineResponce(int position, HomeFragment.DoneCallback callback) {
-//        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+//        serviceTobeBilledAdapter.setList(myAddedServiceList);
 //
-//        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
-//                .create(BookingRequest.class)
-//                .makestatus(getString(R.string.cancel), authentication.getResult().get(position).getId()
-//                        , model.getResult().getId())
-//                .enqueue(new Callback<JsonElement>() {
-//                    @Override
-//                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+//        binding.rvServicesToBeBilled.setAdapter(serviceTobeBilledAdapter);
 //
-//                        binding.loaderLayout.loader.setVisibility(View.GONE);
-//
-//                        if (response != null) {
-//                            if (response.isSuccessful()) {
-//                                JsonObject object = response.body().getAsJsonObject();
-//                                int status = object.get("status").getAsInt();
-//                                if (status == 1) {
-//                                    callback.done();
-//                                    StatusResponse statusResponse = new Gson().fromJson(object, StatusResponse.class);
-//                                    Log.i("scdvddvv", "onResponse: " + statusResponse.getResult());
-//                                }
-//                            }
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<JsonElement> call, Throwable t) {
-//                        binding.loaderLayout.loader.setVisibility(View.GONE);
-//
-//                    }
-//                });
+//        serviceTobeBilledAdapter.notifyDataSetChanged();
 //
 //    }
-//
-//    private void acceptResponse(int position, HomeFragment.DoneCallback callback) {
-//
-//        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
-//
-//        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
-//                .create(BookingRequest.class)
-//                .makestatus(getString(R.string.accept), authentication.getResult().get(position).getId()
-//                        , model.getResult().getId())
-//                .enqueue(new Callback<JsonElement>() {
-//                    @Override
-//                    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-//
-//                        binding.loaderLayout.loader.setVisibility(View.GONE);
-//
-//                        Log.i("scvdbx", "onResponse: " + response.toString());
-//
-//                        if (response != null) {
-//                            if (response.isSuccessful()) {
-//                                JsonObject object = response.body().getAsJsonObject();
-//                                int status = object.get("status").getAsInt();
-//                                if (status == 1) {
-//                                    callback.done();
-//                                    StatusResponse statusResponse = new Gson().fromJson(object, StatusResponse.class);
-//                                    Log.i("scdvddvv", "onResponse: " + statusResponse.getResult());
-//                                }
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<JsonElement> call, Throwable t) {
-//                        binding.loaderLayout.loader.setVisibility(View.GONE);
-//
-//                        Log.i("cxvxv", "onFailure: " + t.getMessage());
-//                    }
-//                });
-//
-//    }
-//
-//    public interface DoneCallback {
-//        void done();
-//    }
+
+
 
 }

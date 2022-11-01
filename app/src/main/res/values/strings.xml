@@ -199,6 +199,8 @@
     <string name="enter_Observation">Please Enter Observation</string>
     <string name="date">Date:</string>
     <string name="facturar">Check In</string>
+    <string name="services_to_be_billed">Services to be billed</string>
+    <string name="select_service">Select Service</string>
 
 
 </resources>

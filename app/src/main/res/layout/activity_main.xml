@@ -66,7 +66,6 @@
 
                     </LinearLayout>
 
-
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -80,8 +79,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
+                        android:layout_centerInParent="true"
                         android:orientation="vertical">
 
                         <ImageView
@@ -90,15 +88,15 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:src="@drawable/notification" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_2sdp"
-                            android:text="@string/notification">
+                            android:text="@string/notification"
+                            android:textColor="@color/white"
+                            android:singleLine="true"
+                            android:textSize="@dimen/_10sdp">
 
                         </TextView>
 

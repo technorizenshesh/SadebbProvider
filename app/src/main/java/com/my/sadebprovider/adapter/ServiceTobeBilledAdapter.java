@@ -3,6 +3,7 @@ package com.my.sadebprovider.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,11 +23,13 @@ public class ServiceTobeBilledAdapter extends RecyclerView.Adapter<ServiceTobeBi
 //    private final Status status;
     public List<com.my.sadebprovider.act.model.service.ResultItem> list;
 
-    public ServiceTobeBilledAdapter(Context context/*, Status status*/) {
+    private final ServicesListBillingAdapter.SelectedItem selecteditem;
+
+    public ServiceTobeBilledAdapter(Context context/*, Status status*/,ServicesListBillingAdapter.SelectedItem selecteditem) {
         this.mContext = context;
+        this.selecteditem = selecteditem;
 //        this.list = list;
 //        this.status = status;
-
     }
 
     public void setList(List<com.my.sadebprovider.act.model.service.ResultItem> list) {
@@ -44,10 +47,18 @@ public class ServiceTobeBilledAdapter extends RecyclerView.Adapter<ServiceTobeBi
         TextView tvPrice = holder.itemView.findViewById(R.id.tvPrice);
         TextView tvTotal = holder.itemView.findViewById(R.id.tvTotal);
 
+        ImageView ivBilled =  holder.itemView.findViewById(R.id.ivDelete);
+
         provider_Name.setText(list.get(position).getServiceName());
         tvPrice.setText(list.get(position).getServicePrice());
         tvTotal.setText(list.get(position).getServicePrice());
-        
+
+        ivBilled.setOnClickListener(v ->
+                {
+                    selecteditem.deleteItem(position);
+                }
+                );
+
     }
 
     public int getItemCount() {
@@ -61,6 +72,8 @@ public class ServiceTobeBilledAdapter extends RecyclerView.Adapter<ServiceTobeBi
         void declinetcontrol(int position, HomeFragment.DoneCallback callback);
 
     }
+
+
 
     public class HomeHolder extends RecyclerView.ViewHolder {
         ItemServiceToBilledBinding binding;

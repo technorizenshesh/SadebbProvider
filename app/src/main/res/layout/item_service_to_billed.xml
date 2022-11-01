@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="@dimen/_8sdp"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:padding="@dimen/_8sdp"
         >
 
         <TextView
@@ -29,7 +30,8 @@
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="0dp"
-            android:layout_weight=".5"                                        android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginRight="16dp"
             android:ellipsize="end"
@@ -40,11 +42,11 @@
             android:text="Precio"
             android:textColor="@color/black"
             android:textSize="14sp" />
-
         <TextView
             android:id="@+id/tvTotal"
             android:layout_width="0dp"
-            android:layout_weight=".5"                                        android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginRight="16dp"
             android:ellipsize="end"
@@ -58,5 +60,16 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:padding="@dimen/_3sdp"
+        android:src="@drawable/ic_delete"
+        app:tint="@color/black" />
+
+</RelativeLayout>
 </layout>
