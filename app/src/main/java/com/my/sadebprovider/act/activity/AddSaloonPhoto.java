@@ -47,20 +47,19 @@ public class AddSaloonPhoto extends AppCompatActivity {
     private ResultItem item;
     private NetworkConstraint.TYPE type;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_saloon_photo);
-        item = new Gson().fromJson(getIntent().getStringExtra("myservicelist"), ResultItem.class);
-        type = (NetworkConstraint.TYPE) getIntent().getSerializableExtra("type");
+      super.onCreate(savedInstanceState);
+      binding = DataBindingUtil.setContentView(this, R.layout.activity_add_saloon_photo);
+      item = new Gson().fromJson(getIntent().getStringExtra("myservicelist"), ResultItem.class);
+      type = (NetworkConstraint.TYPE) getIntent().getSerializableExtra("type");
 
-        init();
+      init();
 
-        setdata();
+      setdata();
 
       String  provider_user_id=getIntent().getStringExtra("provider_user_id");
-        Log.i("csvsbbd", "onCreate: "+provider_user_id);
+      Log.i("csvsbbd", "onCreate: "+provider_user_id);
 
         binding.continew.setOnClickListener(v -> {
             if (type == NetworkConstraint.TYPE.EDIT) {
@@ -88,6 +87,7 @@ public class AddSaloonPhoto extends AppCompatActivity {
                     intent.putExtra("currentIndex", currentIndex);
                     intent.putExtra("type", NetworkConstraint.TYPE.ADD);
                     startActivity(intent);
+
                 }
             }
 
@@ -116,8 +116,7 @@ public class AddSaloonPhoto extends AppCompatActivity {
             Picasso.get().load(item.getImage6()).placeholder(R.drawable.user_placeholder).into(binding.imgLogoSix);
             Picasso.get().load(item.getImage7()).placeholder(R.drawable.user_placeholder).into(binding.imgLogoSeven);
 
-
-            Picasso.get().load(item.getImage1()).placeholder(R.drawable.user_placeholder).into(binding.imgSingle);
+            Picasso.get().load(item.getServiceImage()).placeholder(R.drawable.user_placeholder).into(binding.imgSingle);
 
 
         }

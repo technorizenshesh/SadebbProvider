@@ -1,8 +1,10 @@
 package com.my.sadebprovider.act.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.my.sadebprovider.R;
 import com.my.sadebprovider.act.model.authentication.ResponseAuthentication;
+import com.my.sadebprovider.act.model.authentication.SuccessResDeleteClient;
 import com.my.sadebprovider.act.model.category.CategoryResponse;
 import com.my.sadebprovider.act.model.client.SuccessResGetClient;
 import com.my.sadebprovider.act.model.password.ForgetPasswordResponse;
@@ -28,6 +31,7 @@ import retrofit2.Response;
 public class ClientDetailAct extends AppCompatActivity {
 
     ActivityClientDetailBinding binding;
+
     private ResponseAuthentication model;
 
     private SuccessResGetClient.Result clientData;
@@ -42,11 +46,63 @@ public class ClientDetailAct extends AppCompatActivity {
         model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
 
         Bundle bundle = getIntent().getExtras();
-         clientId = bundle.getString("id");
+        clientId = bundle.getString("id");
 
         clientResponse();
 
+        binding.ivDelete.setOnClickListener(v ->
+                {
+                    new AlertDialog.Builder(ClientDetailAct.this)
+                            .setTitle("Eliminar cliente")
+                            .setMessage("¿Está seguro de que desea eliminar este cliente?")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Continue with delete operation
+
+                                    deleteClient();
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            .setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                );
+
     }
+
+
+
+    private void deleteClient() {
+        String user_id = model.getResult().getId();
+        binding.loaderLayout.loader.setVisibility(View.VISIBLE);
+
+        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
+                .create(CategoryRequest.class)
+                .deleteClient(clientId,user_id)
+                .enqueue(new Callback<SuccessResDeleteClient>() {
+                    @Override
+                    public void onResponse(Call<SuccessResDeleteClient> call, Response<SuccessResDeleteClient> response) {
+                        binding.loaderLayout.loader.setVisibility(View.GONE);
+                        if (response != null) {
+
+                            finish();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SuccessResDeleteClient> call, Throwable t) {
+                        binding.loaderLayout.loader.setVisibility(View.GONE);
+                    }
+                });
+    }
+
 
     private void clientResponse() {
         binding.loaderLayout.loader.setVisibility(View.VISIBLE);

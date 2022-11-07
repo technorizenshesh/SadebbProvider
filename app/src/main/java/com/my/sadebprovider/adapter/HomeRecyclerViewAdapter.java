@@ -26,7 +26,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         this.mContext = context;
 //        this.list = list;
         this.status = status;
-
     }
 
     public void setList(List<ResultItem> list) {
@@ -54,7 +53,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         holder.binding.providerName.setText(list.get(position).getProviderUserResponse().getUserName());
         holder.binding.providerNo.setText(list.get(position).getProviderUserResponse().getMobile());
 
-        Picasso.get().load(list.get(position).getUsersDetails().getImage()).placeholder(R.drawable.user_placeholder).error(R.drawable.user_placeholder).into(holder.binding.roundedUserImage);
+        Picasso.get().load(list.get(position).getService_details().getImage1()).placeholder(R.drawable.user_placeholder).error(R.drawable.user_placeholder).into(holder.binding.roundedUserImage);
         Picasso.get().load(list.get(position).getProviderUserResponse().getImage()).placeholder(R.drawable.user_placeholder).error(R.drawable.user_placeholder).into(holder.binding.ivProviderImage);
 
         if (list.get(position).getStatus().equals("Cancel")) {

@@ -100,7 +100,7 @@ public class BillingScreen2 extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(BillingScreen2.this, "Por favor agregue servicios", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BillingScreen2.this, ""+getString(R.string.please_select_service), Toast.LENGTH_SHORT).show();
                     }
                 }
                 );

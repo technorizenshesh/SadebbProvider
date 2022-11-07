@@ -16,13 +16,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/RR_toolbaar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
             <RelativeLayout
                 android:id="@+id/RR_tool"
@@ -74,7 +72,6 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_60sdp">
-
 
                 <TextView
                     android:maxLines="1"
@@ -546,7 +543,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-
                     <ImageView
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_gravity="center"
@@ -559,7 +555,6 @@
                 </LinearLayout>
 
             </RelativeLayout>
-
 
         </LinearLayout>
 

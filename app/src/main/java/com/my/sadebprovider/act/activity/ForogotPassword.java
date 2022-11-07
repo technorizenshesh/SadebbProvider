@@ -29,7 +29,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class ForogotPassword extends AppCompatActivity {
 
    private ActivityForogotPasswordBinding binding;
@@ -38,10 +37,7 @@ public class ForogotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this,R.layout.activity_forogot_password);
 
-
         SetupUI();
-
-
         init();
 
     }

@@ -42,6 +42,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ServiceFragment extends Fragment {
+
     private FragmentServiceBinding binding;
     private final ArrayList<HomeModel> modelList = new ArrayList<>();
     private List<ResultItem> myservicelist = new ArrayList();
@@ -72,7 +73,6 @@ public class ServiceFragment extends Fragment {
                         alertDialog.dismiss();
                     }
                 })
-
                 .show();
             }
 

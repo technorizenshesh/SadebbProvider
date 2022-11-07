@@ -158,7 +158,7 @@ Simplemente comparta este código con sus amigos y pídales que se registren y a
     <string name="please_enter_description">Por favor ingrese la descripción</string>
     <string name="enter_business_name">Ingrese el nombre comercial</string>
     <string name="enter_business_address">Ingrese la dirección comercial</string>
-    <string name="business_detail">detalle de negocio</string>
+    <string name="business_detail">Detalle de negocio</string>
     <string name="press_once_again_to_exit">Presione una vez más para salir</string>
     <string name="are_you_sure_you_wanted_to_delete">¿Estás segura de que querías eliminar?</string>
     <string name="no">No</string>
@@ -170,7 +170,7 @@ Simplemente comparta este código con sus amigos y pídales que se registren y a
     <string name="gallery">Galería</string>
     <string name="language">Idioma</string>
     <string name="billing">Facturación</string>
-    <string name="time_slot">franja horaria</string>
+    <string name="time_slot">Franja Horaria</string>
     <string name="price">Precio:- </string>
     <string name="billing_graph_view">Vista de gráfico de facturación</string>
     <string name="completed">Terminado</string>
@@ -186,6 +186,7 @@ Simplemente comparta este código con sus amigos y pídales que se registren y a
     <string name="descuento">Descuento</string>
     <string name="observaciones">Observaciones</string>
     <string name="add_client">Agregar cliente</string>
+    <string name="client_details">Detalles del cliente</string>
     <string name="search_client">Cliente de búsqueda</string>
     <string name="client_creation">Creacion de cliente</string>
     <string name="enter_client_code">Please enter Codigo Ciente</string>
@@ -198,6 +199,8 @@ Simplemente comparta este código con sus amigos y pídales que se registren y a
     <string name="services_to_be_billed">Servicios a facturar</string>
 
     <string name="select_service">Seleccionar servicio</string>
+
+    <string name="please_select_service">Por favor agregue servicios</string>
 
 </resources>
 

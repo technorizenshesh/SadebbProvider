@@ -48,6 +48,12 @@ public class SearchClientAct extends AppCompatActivity {
                 }
                 );
         setAdapter();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         successResClients();
     }
 
@@ -69,10 +75,12 @@ public class SearchClientAct extends AppCompatActivity {
                     public void onResponse(Call<SuccessResClients> call, Response<SuccessResClients> response) {
                         binding.loaderLayout.loader.setVisibility(View.GONE);
                         if (response != null) {
+                            list.clear();
                             list.addAll(response.body().getResult());
                             mAdapter.notifyDataSetChanged();
                         }
                     }
+
                     @Override
                     public void onFailure(Call<SuccessResClients> call, Throwable t) {
                         binding.loaderLayout.loader.setVisibility(View.GONE);

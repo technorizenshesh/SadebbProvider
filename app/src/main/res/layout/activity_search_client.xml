@@ -110,7 +110,7 @@
                                     android:layout_toLeftOf="@id/provider_no"
                                     android:ellipsize="end"
                                     android:fontFamily="@font/raleway_semibold"
-                                    android:text="Codigo de cliente"
+                                    android:text="Codigo"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
 

@@ -70,13 +70,7 @@ public class AccountFragment extends Fragment {
                     alertDialog.dismiss();
                 }
             }).show();
-
-
-
         });
-
-
-
 
         return binding.getRoot();
     }
@@ -84,15 +78,12 @@ public class AccountFragment extends Fragment {
     private void init() {
         binding.llMain.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), UpdateName.class));
-
         });
-
 
         binding.RREmail.setOnClickListener(v -> {
 
 //            startActivity(new Intent(getContext(), UpdateEmail.class));
 //            startActivity(new Intent(getContext(), ServicesListActivity.class));
-
         });
         binding.RRMyService.setOnClickListener(v -> {
 //            startActivity(new Intent(getContext(), ServicesListActivity.class));
@@ -101,7 +92,6 @@ public class AccountFragment extends Fragment {
         binding.businessDetail.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), BusinessDetailActivity.class));
         });
-
 
         binding.RRGender.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), UpdateGender.class));
@@ -125,7 +115,6 @@ public class AccountFragment extends Fragment {
             intent.putExtra(Intent.EXTRA_TEXT, link.toString());
 
             startActivity(Intent.createChooser(intent, "Share Link"));
-
 
 //            startActivity(new Intent(getContext(), InviteFriends.class));
         });

@@ -36,12 +36,11 @@
                     app:cardCornerRadius="160dp"
                     app:cardElevation="16dp">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/rounded_user_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/user_placeholder" />
-
 
                 </androidx.cardview.widget.CardView>
 
@@ -90,7 +89,6 @@
                             android:visibility="gone" />
 
                     </LinearLayout>
-
 
                     <TextView
                         android:id="@+id/tv_No_of_Booking"

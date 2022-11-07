@@ -70,6 +70,7 @@
     <string name="time_slot_added_successfully">Time Slot Added Successfully</string>
     <string name="add_user">Add User</string>
     <string name="add_client">Add Client</string>
+    <string name="client_details">Client Details</string>
     <string name="user_name_">User Name</string>
     <string name="please_enter_user_name">Please enter user name</string>
     <string name="user_email">User Email</string>
@@ -201,6 +202,6 @@
     <string name="facturar">Check In</string>
     <string name="services_to_be_billed">Services to be billed</string>
     <string name="select_service">Select Service</string>
-
+    <string name="please_select_service">Please add services</string>
 
 </resources>

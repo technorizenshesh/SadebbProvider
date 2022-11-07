@@ -22,7 +22,9 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
@@ -37,9 +39,12 @@ import com.google.gson.JsonObject;
 import com.my.sadebprovider.R;
 import com.my.sadebprovider.act.model.authentication.ResponseAuthError;
 import com.my.sadebprovider.act.model.authentication.ResponseAuthentication;
+import com.my.sadebprovider.act.model.businesscategory.BusinessType;
 import com.my.sadebprovider.act.network.NetworkConstraint;
 import com.my.sadebprovider.act.network.RetrofitClient;
+import com.my.sadebprovider.act.network.category.CategoryRequest;
 import com.my.sadebprovider.act.network.profile.UpdateProfile;
+import com.my.sadebprovider.adapter.SpinnerBusinessTypeAdapter;
 import com.my.sadebprovider.databinding.ActivityBusinessDetailBinding;
 import com.my.sadebprovider.util.RealPathUtil;
 import com.my.sadebprovider.util.ScalingUtilities;
@@ -53,6 +58,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -69,12 +75,14 @@ import static com.my.sadebprovider.R.string.enter_pass;
 
 public class BusinessDetailActivity extends AppCompatActivity {
 
+    private final List<BusinessType.Result> list = new ArrayList<>();
+
     ActivityBusinessDetailBinding binding;
     private ResponseAuthentication model;
     public static final int PICK_IMAGE = 1;
     public static final int PICK_IMAGE_MORE = 2;
     private final File[] files = {null, null, null, null, null, null, null, null, null};
-
+    private SpinnerBusinessTypeAdapter adapter;
     private final String[] strings = {null, null, null, null, null, null, null, null, null};
     final int PERMISSION_ALL = 100;
     final String[] PERMISSIONS = {
@@ -97,7 +105,6 @@ public class BusinessDetailActivity extends AppCompatActivity {
         model = SharedPrefsManager.getInstance().getObject(SharePrefrenceConstraint.provider, ResponseAuthentication.class);
         binding.etBusinessName.setText(model.getResult().getBusiness_name());
         binding.etBusinessAddress.setText(model.getResult().getBusiness_address());
-        binding.tvBusinessType.setText(model.getResult().getBusinessTypeNameSp());
         latitude = model.getResult().getB_lat();
         longitude = model.getResult().getB_lon();
         binding.etNo.setText(model.getResult().getBusiness_cell_phone());
@@ -110,6 +117,21 @@ public class BusinessDetailActivity extends AppCompatActivity {
         binding.etBusinessOpenDate.setText(model.getResult().getOpen_date());
         binding.etBusinessCloseDate.setText(model.getResult().getClose_date());
         binding.etDescription.setText(model.getResult().getDescription());
+
+        adapter = new SpinnerBusinessTypeAdapter(this, list);
+        binding.spinner.setAdapter(adapter);
+        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                LinearLayout linearLayout = (LinearLayout) binding.spinner.getSelectedView();
+//                textView = linearLayout.findViewById(R.id.text);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         binding.ccp.setCountryForPhoneCode(57);
 
@@ -218,7 +240,55 @@ public class BusinessDetailActivity extends AppCompatActivity {
         });
         SetupUI();
         init();
+        CategoryResponse();
     }
+
+
+    private void CategoryResponse() {
+
+        String language= SharedPrefsManager.getInstance().getString("language");
+
+        RetrofitClient.getClient(NetworkConstraint.BASE_URL)
+                .create(CategoryRequest.class)
+                .getBusinesType(language)
+                .enqueue(new Callback<BusinessType>() {
+                    @Override
+                    public void onResponse(Call<BusinessType> call, Response<BusinessType> response) {
+                        if (response != null) {
+                            list.addAll(response.body().getResult());
+                            adapter.notifyDataSetChanged();
+
+                            setSpinnerPosition();
+
+//                            SetData(item);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BusinessType> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+
+    public void setSpinnerPosition()
+    {
+        int i=0;
+        for(BusinessType.Result result:list)
+        {
+            if(result.getId().equalsIgnoreCase(model.getResult().getBusinessType()))
+            {
+                break;
+            }
+            i++;
+        }
+
+        binding.spinner.setSelection(i);
+
+    }
+
 
     public void init() {
         binding.imgCamera.setOnClickListener(new View.OnClickListener() {
@@ -692,6 +762,7 @@ public class BusinessDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 MultipartBody.Part user_id = MultipartBody.Part.createFormData("user_id", model.getResult().getId());
+                MultipartBody.Part category_id = MultipartBody.Part.createFormData("business_type", list.get(binding.spinner.getSelectedItemPosition()).getId());
                 MultipartBody.Part business_name = MultipartBody.Part.createFormData("business_name", binding.etBusinessName.getText().toString());
                 MultipartBody.Part business_address = MultipartBody.Part.createFormData("business_address", binding.etBusinessAddress.getText().toString());
                 MultipartBody.Part b_lat = MultipartBody.Part.createFormData("b_lat", latitude);
@@ -715,7 +786,7 @@ public class BusinessDetailActivity extends AppCompatActivity {
                     binding.loaderLayout.loader.setVisibility(View.VISIBLE);
                     RetrofitClient.getClient(NetworkConstraint.BASE_URL)
                             .create(UpdateProfile.class)
-                            .updateBusiness(user_id, business_name, business_address, b_lat, b_lon, business_cell_phone, business_landline, offer_home_delivery, open_date, close_date, business_profile_image, /*image1, image2, image3, image4, image5, image6, image7,*/ description)
+                            .updateBusiness(user_id,category_id, business_name, business_address, b_lat, b_lon, business_cell_phone, business_landline, offer_home_delivery, open_date, close_date, business_profile_image, /*image1, image2, image3, image4, image5, image6, image7,*/ description)
                             .enqueue(new Callback<JsonElement>() {
                                 @Override
                                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {

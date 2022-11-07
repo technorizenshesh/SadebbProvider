@@ -56,7 +56,6 @@ public class AddClientAct extends AppCompatActivity {
     public static final int CAPTURE_IMAGE = 3;
     final int PERMISSION_ALL = 100;
     private String called_from;
-
     ActivityAddClientBinding binding;
     
     final String[] PERMISSIONS = {
@@ -82,7 +81,6 @@ public class AddClientAct extends AppCompatActivity {
     private void init() {
 
         binding.ccp.setCountryForPhoneCode(57);
-
 
         binding.ivProfile.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -285,8 +283,5 @@ public class AddClientAct extends AppCompatActivity {
         Log.i("sxzfdsf", "getPartFromFile: " + profile_image);
         return profile_image;
     }
-
-
-
 
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
     </data>
 
     <RelativeLayout
@@ -16,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:orientation="horizontal"
                 android:id="@+id/RR_toolbaar"
                 android:layout_width="match_parent"
@@ -24,11 +23,11 @@
 
                 <ImageView
                     android:layout_marginLeft="@dimen/_12sdp"
-                    android:layout_centerInParent="true"
                     android:src="@drawable/backnew"
                     android:padding="@dimen/_5sdp"
                     android:id="@+id/iv_Back"
                     android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp">
 
@@ -37,18 +36,30 @@
                 <TextView
                     android:gravity="center"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_centerVertical="true"
                     android:id="@+id/sihn"
                     android:layout_width="wrap_content"
+                    android:layout_toRightOf="@id/iv_Back"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@string/add_client"
+                    android:text="@string/client_details"
                     android:textColor="@color/dark"
                     android:textSize="@dimen/_16sdp"
+                    android:layout_centerVertical="true"
                     android:textStyle="bold" />
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/ivDelete"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_delete"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    app:tint="@color/black" />
+
+            </RelativeLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -90,7 +101,6 @@
 
                     </RelativeLayout>
 
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,7 +112,6 @@
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="14sp" />
-
 
                     <TextView
                         android:layout_width="wrap_content"

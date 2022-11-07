@@ -25,6 +25,7 @@ public interface UpdateProfile {
     @Multipart
     @POST("update_business")
     Call<JsonElement> updateBusiness(@Part MultipartBody.Part user_id,
+                                     @Part MultipartBody.Part business_type,
                                      @Part MultipartBody.Part business_name,
                                      @Part MultipartBody.Part business_address,
                                      @Part MultipartBody.Part b_lat,

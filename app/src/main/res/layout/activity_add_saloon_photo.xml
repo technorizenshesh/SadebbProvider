@@ -58,7 +58,6 @@
                         android:layout_height="wrap_content"
                         >
 
-
                         <RelativeLayout
                             android:layout_marginRight="@dimen/_10sdp"
                             android:layout_marginLeft="@dimen/_10sdp"
@@ -309,15 +308,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             >
-                        <ImageView
-                            android:scaleType="centerCrop"
-                            android:id="@+id/img_single"
-                            android:textColor="@color/black"
-                            android:layout_centerInParent="true"
-                            android:text="Normal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                        </ImageView>
+
+                            <ImageView
+                                android:id="@+id/img_single"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:scaleType="centerCrop"
+                                android:text="Normal"
+                                android:textColor="@color/black"></ImageView>
                         </RelativeLayout>
 
 
