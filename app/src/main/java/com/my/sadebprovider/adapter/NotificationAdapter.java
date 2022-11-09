@@ -19,6 +19,7 @@ import java.util.List;
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationAdapter_View> {
 
     private List<ResultItem> results;
+
     Context  context;
     public NotificationAdapter(/*List<ResultItem> results,*/Context context) {
 //        this.results=results;
@@ -49,7 +50,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         String time =results.get(position).getDateTime();
         holder.binding.tvTime.setText(time.substring(10));
         holder.binding.tvReadMore.setText(String.format(context.getString(R.string.user_name), results.get(position).getUserName()));
-//        holder.binding.tvReadMore.setText("User Name:- "+ results.get(position).getUserName());
+//      holder.binding.tvReadMore.setText("User Name:- "+ results.get(position).getUserName());
 
      }
 
